@@ -3,28 +3,30 @@ import './App.css';
 
 class App extends Component {
 
-  state = {
-    content: '',
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
     
   }
 
-  
-
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
 
   
   render() {
     return (
       <div className="container">
-        <textarea rows="3" name="content" value = {this.state.content} onChange = {this.handleOnChange} > </textarea>
-        <div className="counter">{this.state.content.length}</div>
+        <textarea rows="3" name="content" value={this.state.value} onChange={this.handleChange} > </textarea>
+        <div className="counter">{this.state.value.length}</div>
       </div>
     );
   
 }
 
-handleOnChange = (e) => {
-  this.setState({[e.target.name]:e.target.value})
-}
+
 
 }
 export default App;
